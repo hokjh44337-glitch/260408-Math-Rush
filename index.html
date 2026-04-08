@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Math Rush</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="wrap">
+
+  <!-- 시작 화면 -->
+  <div class="screen active" id="startScreen">
+    <div class="title">Math Rush</div>
+    <div class="subtitle">빠른 계산으로 점수를 올려라! 연속 정답으로 버프 획득!</div>
+
+    <div class="section-title">난이도 선택</div>
+    <div class="diff-grid">
+      <div class="diff-btn selected" data-diff="easy" onclick="selectDiff(this,'easy')">
+        <div class="btn-main">쉬움</div>
+        <div class="btn-sub">1~9 덧뺄셈</div>
+      </div>
+      <div class="diff-btn" data-diff="medium" onclick="selectDiff(this,'medium')">
+        <div class="btn-main">중간</div>
+        <div class="btn-sub">곱셈 포함</div>
+      </div>
+      <div class="diff-btn" data-diff="hard" onclick="selectDiff(this,'hard')">
+        <div class="btn-main">어려움</div>
+        <div class="btn-sub">두자리 혼합</div>
+      </div>
+    </div>
+
+    <div class="section-title top-gap">문제 유형</div>
+    <div class="mode-grid">
+      <div class="mode-btn selected" data-mode="calc" onclick="selectMode(this,'calc')">
+        <div class="btn-main">계산 모드</div>
+        <div class="btn-sub">식을 보고<br>정답 고르기</div>
+      </div>
+      <div class="mode-btn" data-mode="reverse" onclick="selectMode(this,'reverse')">
+        <div class="btn-main">역산 모드</div>
+        <div class="btn-sub">숫자를 보고<br>맞는 식 고르기</div>
+      </div>
+    </div>
+
+    <button class="btn btn-primary full-width top-gap" onclick="startGame()">시작하기</button>
+  </div>
+
+  <!-- 플레이 화면 -->
+  <div class="screen" id="playScreen">
+    <div class="play-top">
+      <span class="play-meta">남은 시간 <span id="timeNum" class="green-text">30</span>초</span>
+      <span class="play-meta" id="modeLabel">계산 모드</span>
+      <span class="play-meta">점수 <span id="score" class="amber-text">0</span></span>
+    </div>
+    <div class="timer-bar-wrap"><div class="timer-bar" id="timerBar"></div></div>
+
+    <div class="stats-row">
+      <div class="stat-card">
+        <div class="stat-label">정답</div>
+        <div class="stat-val green-text" id="correctCount">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">오답</div>
+        <div class="stat-val amber-text" id="wrongCount">0</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-label">정답률</div>
+        <div class="stat-val pink-text" id="accuracy">-</div>
+      </div>
+    </div>
+
+    <div class="question-label" id="questionLabel">다음 식의 정답은?</div>
+    <div class="question-box" id="question">?</div>
+    <div class="choices" id="choices"></div>
+
+    <div class="bottom-row">
+      <div class="combo-area">
+        <span class="combo-label">콤보</span>
+        <div class="combo-bar" id="comboPips"></div>
+        <span id="comboCount" class="combo-count">0</span>
+        <span id="buffBadge" class="buff-badge hidden"></span>
+      </div>
+      <div class="feedback-text" id="feedback"></div>
+    </div>
+  </div>
+
+  <!-- 종료 화면 -->
+  <div class="screen" id="endScreen">
+    <div class="title-sm">게임 종료</div>
+    <div class="subtitle" id="endSubtitle"></div>
+    <div class="end-stats">
+      <div class="end-stat">
+        <div class="end-stat-label">최종 점수</div>
+        <div class="end-stat-val" id="finalScore">0</div>
+      </div>
+      <div class="end-stat">
+        <div class="end-stat-label">최고 기록</div>
+        <div class="end-stat-val" id="bestScore">0</div>
+      </div>
+      <div class="end-stat">
+        <div class="end-stat-label">정답률</div>
+        <div class="end-stat-val" id="finalAccuracy">-</div>
+      </div>
+      <div class="end-stat">
+        <div class="end-stat-label">최대 콤보</div>
+        <div class="end-stat-val" id="finalCombo">0</div>
+      </div>
+    </div>
+    <button class="btn btn-primary full-width" onclick="goStart()">다시 설정</button>
+  </div>
+
+</div>
+
+<script src="game.js"></script>
+</body>
+</html>

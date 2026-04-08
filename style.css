@@ -1,0 +1,360 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  padding: 2rem 1rem;
+  min-height: 100vh;
+}
+
+/* ── 레이아웃 ── */
+.wrap {
+  max-width: 380px;
+  width: 100%;
+}
+
+.screen {
+  display: none;
+}
+
+.screen.active {
+  display: block;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.full-width {
+  width: 100%;
+}
+
+.top-gap {
+  margin-top: 1rem;
+}
+
+/* ── 타이포그래피 ── */
+.title {
+  font-size: 26px;
+  font-weight: 500;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+.title-sm {
+  font-size: 22px;
+  font-weight: 500;
+  color: #111;
+  margin-bottom: 4px;
+}
+
+.subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 1.25rem;
+}
+
+.section-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: #888;
+  margin-bottom: 6px;
+}
+
+/* ── 색상 유틸 ── */
+.green-text  { color: #0F6E56; }
+.amber-text  { color: #854F0B; }
+.pink-text   { color: #993556; }
+
+/* ── 버튼 공통 ── */
+.btn {
+  padding: 10px 20px;
+  font-size: 15px;
+  font-weight: 500;
+  background: #ebebeb;
+  border: 0.5px solid #ccc;
+  border-radius: 8px;
+  color: #111;
+  cursor: pointer;
+  transition: background 0.15s, transform 0.1s;
+}
+
+.btn:hover   { background: #e0e0e0; }
+.btn:active  { transform: scale(0.97); }
+
+.btn-primary {
+  background: #E1F5EE;
+  border-color: #0F6E56;
+  color: #085041;
+  padding: 13px 20px;
+}
+
+.btn-primary:hover { background: #9FE1CB; }
+
+/* ── 난이도 선택 ── */
+.diff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.diff-btn {
+  padding: 12px 8px;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  border: 0.5px solid #ccc;
+  background: #ebebeb;
+  color: #111;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+}
+
+.diff-btn:hover { background: #e0e0e0; }
+
+.diff-btn.selected {
+  background: #E1F5EE;
+  border: 1.5px solid #0F6E56;
+  color: #085041;
+}
+
+/* ── 모드 선택 ── */
+.mode-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.mode-btn {
+  padding: 14px 8px;
+  font-size: 13px;
+  font-weight: 500;
+  border-radius: 8px;
+  border: 0.5px solid #ccc;
+  background: #ebebeb;
+  color: #111;
+  cursor: pointer;
+  transition: all 0.15s;
+  text-align: center;
+}
+
+.mode-btn:hover { background: #e0e0e0; }
+
+.mode-btn.selected {
+  background: #EEEDFE;
+  border: 1.5px solid #534AB7;
+  color: #26215C;
+}
+
+.btn-main { font-size: 16px; margin-bottom: 4px; }
+.btn-sub  { font-size: 11px; opacity: 0.75; }
+
+/* ── 플레이 화면 상단 ── */
+.play-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.play-meta {
+  font-size: 14px;
+  font-weight: 500;
+  color: #666;
+}
+
+/* ── 타이머 바 ── */
+.timer-bar-wrap {
+  height: 5px;
+  background: #e0e0e0;
+  border-radius: 3px;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+}
+
+.timer-bar {
+  height: 5px;
+  background: #0F6E56;
+  border-radius: 3px;
+  transition: width 0.9s linear, background 0.3s;
+}
+
+/* ── 통계 카드 ── */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 1rem;
+}
+
+.stat-card {
+  background: #ebebeb;
+  border-radius: 8px;
+  padding: 8px 10px;
+  text-align: center;
+}
+
+.stat-label {
+  font-size: 11px;
+  color: #999;
+  margin-bottom: 2px;
+}
+
+.stat-val {
+  font-size: 18px;
+  font-weight: 500;
+}
+
+/* ── 문제 ── */
+.question-label {
+  font-size: 13px;
+  color: #888;
+  text-align: center;
+  margin-bottom: 0.25rem;
+}
+
+.question-box {
+  font-size: 44px;
+  font-weight: 500;
+  text-align: center;
+  padding: 1.25rem 0;
+  color: #111;
+  letter-spacing: 1px;
+}
+
+/* ── 선택지 ── */
+.choices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 0.75rem 0;
+}
+
+.choice-btn {
+  padding: 14px;
+  font-size: 17px;
+  font-weight: 500;
+  background: #ebebeb;
+  border: 0.5px solid #ccc;
+  border-radius: 8px;
+  color: #111;
+  cursor: pointer;
+  transition: background 0.12s, transform 0.1s;
+}
+
+.choice-btn:hover  { background: #e0e0e0; }
+.choice-btn:active { transform: scale(0.97); }
+
+.choice-btn.correct {
+  background: #C0DD97;
+  border-color: #3B6D11;
+  color: #173404;
+}
+
+.choice-btn.wrong {
+  background: #F7C1C1;
+  border-color: #A32D2D;
+  color: #501313;
+}
+
+.choice-btn.disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* ── 하단 콤보/피드백 ── */
+.bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: #888;
+  min-height: 28px;
+  margin-top: 4px;
+}
+
+.combo-area {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.combo-label { font-size: 12px; color: #aaa; }
+
+.combo-bar {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.combo-pip {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  border: 0.5px solid #ccc;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.combo-pip.filled { background: #D4537E; border-color: #993556; }
+.combo-pip.max    { background: #BA7517; border-color: #854F0B; }
+
+.combo-count {
+  font-size: 13px;
+  font-weight: 500;
+  color: #555;
+}
+
+.buff-badge {
+  font-size: 12px;
+  padding: 2px 8px;
+  border-radius: 8px;
+  font-weight: 500;
+}
+
+.buff-1 { background: #EEEDFE; color: #3C3489; }
+.buff-2 { background: #E1F5EE; color: #085041; }
+.buff-3 { background: #FAEEDA; color: #633806; }
+.buff-4 { background: #FAECE7; color: #712B13; }
+.buff-5 { background: #FBEAF0; color: #72243E; }
+
+.feedback-text {
+  font-size: 15px;
+  font-weight: 500;
+  color: #111;
+}
+
+/* ── 종료 화면 ── */
+.end-stats {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin: 1rem 0;
+}
+
+.end-stat {
+  background: #ebebeb;
+  border-radius: 8px;
+  padding: 10px 12px;
+}
+
+.end-stat-label {
+  font-size: 12px;
+  color: #999;
+  margin-bottom: 4px;
+}
+
+.end-stat-val {
+  font-size: 20px;
+  font-weight: 500;
+  color: #111;
+}
